@@ -53,9 +53,9 @@
 						placeholder="Link do Twojej strony"/>
 		</div>
 
-		<form:checkboxes items="${playedInstruments}" path="playedInstruments" itemLabel="instrument" />
+		<form:checkboxes path="playedInstruments" itemValue="id" items="${playedInstruments}" itemLabel="instrument" />
 
-		<form:checkboxes items="${musicGenres}" path="musicGenres" itemLabel="genreName" />
+		<form:checkboxes path="musicGenres" itemValue="id" items="${musicGenres}" itemLabel="genreName"/>
 
 		<button type="submit" class="btn btn-primary">Zapisz!</button>
 

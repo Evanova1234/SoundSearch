@@ -1,6 +1,7 @@
 package pl.soundsearch.entity;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -21,9 +22,9 @@ public class SingleUser {
 	private Long id; 
 	private String firstName; 
 	private String lastName; 
-	private LocalDate birthDate; 
+	private Date birthDate; 
 	private String city; 
-	private LocalDate playingYears; 
+	private Date playingYears; 
 	private String gear;
 	private String description; 
 	private String httpLink;
@@ -54,11 +55,11 @@ public class SingleUser {
 		this.lastName = lastName;
 	}
 
-	public LocalDate getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -70,11 +71,11 @@ public class SingleUser {
 		this.city = city;
 	}
 
-	public LocalDate getPlayingYears() {
+	public Date getPlayingYears() {
 		return playingYears;
 	}
 
-	public void setPlayingYears(LocalDate playingYears) {
+	public void setPlayingYears(Date playingYears) {
 		this.playingYears = playingYears;
 	}
 
