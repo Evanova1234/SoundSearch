@@ -19,6 +19,32 @@ public class Instrument {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id; 
 	private String instrument; 
-	private String instrDescription; 
+	private String instrDescription;
+	
+	public Instrument() {
+		super();
+	}
+
+	public String getInstrument() {
+		return instrument;
+	}
+
+	public void setInstrument(String instrument) {
+		this.instrument = instrument;
+	}
+
+	public String getInstrDescription() {
+		return instrDescription;
+	}
+
+	public void setInstrDescription(String instrDescription) {
+		this.instrDescription = instrDescription;
+	}
+
+	public Long getId() {
+		return id;
+	} 
+	
+	
 	
 }

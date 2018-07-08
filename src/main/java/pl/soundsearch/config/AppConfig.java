@@ -5,20 +5,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import pl.soundsearch.converter.InstrumentConverter;
+import pl.soundsearch.converter.MusicGenreConverter;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "pl.soundsearch")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages	= "pl.soundsearch.repository")
-
+@EnableJpaRepositories(basePackages = "pl.soundsearch.repository")
 
 public class AppConfig extends WebMvcConfigurerAdapter {
 
@@ -42,5 +46,21 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
+
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+		registry.addConverter(getMusicGenreConverter());
+		registry.addConverter(getInstrumentConverter());
+	}
+
+	@Bean
+	public MusicGenreConverter getMusicGenreConverter() {
+		return new MusicGenreConverter();
+	}
 	
+	@Bean
+	public InstrumentConverter getInstrumentConverter() {
+		return new InstrumentConverter();
+	}
+
 }
