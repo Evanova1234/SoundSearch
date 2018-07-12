@@ -1,11 +1,9 @@
 package pl.soundsearch.controller;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import pl.soundsearch.entity.Instrument;
 import pl.soundsearch.entity.MusicGenre;
 import pl.soundsearch.entity.SingleUser;
@@ -57,7 +54,7 @@ public class SingleUserController {
 	public void bind(WebDataBinder binder) { 
 		SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd"); 
 		simpleDate.setLenient(true);
-		binder.registerCustomEditor(LocalDate.class, new Test(simpleDate,true));
+		binder.registerCustomEditor(Date.class, new Test(simpleDate,true));
 		
 	}
 	
