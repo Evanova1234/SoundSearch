@@ -40,6 +40,80 @@ public class Advertisement {
 	private AdStatus adStatus; 				// Advertisement's status 
 	
 	private LocalDate expirationDate;		// Advertisement's expiration date 
+
+	public Advertisement() {
+		super();
+	}
+
+	public AdCategory getAdCategory() {
+		return adCategory;
+	}
+
+	public void setAdCategory(AdCategory adCategory) {
+		this.adCategory = adCategory;
+	}
+
+	public BandUser getBandUser() {
+		return bandUser;
+	}
+
+	public void setBandUser(BandUser bandUser) {
+		this.bandUser = bandUser;
+	}
+
+	public SingleUser getSingleUser() {
+		return singleUser;
+	}
+
+	public void setSingleUser(SingleUser singleUser) {
+		this.singleUser = singleUser;
+	}
+
+	public List<Instrument> getInstruments() {
+		return instruments;
+	}
+
+	public void setInstruments(List<Instrument> instruments) {
+		this.instruments = instruments;
+	}
+
+	public List<MusicGenre> getMusicGenres() {
+		return musicGenres;
+	}
+
+	public void setMusicGenres(List<MusicGenre> musicGenres) {
+		this.musicGenres = musicGenres;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public AdStatus getAdStatus() {
+		return adStatus;
+	}
+
+	public void setAdStatus(AdStatus adStatus) {
+		this.adStatus = adStatus;
+	}
+
+	public LocalDate getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(LocalDate expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
+	public Long getId() {
+		return id;
+	}
+	
+	
 	
 }
 

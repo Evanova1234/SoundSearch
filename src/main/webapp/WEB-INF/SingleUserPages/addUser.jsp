@@ -53,7 +53,7 @@
 						placeholder="Link do Twojej strony"/>
 		</div>
 
-		<form:checkboxes path="playedInstruments" itemValue="id" items="${playedInstruments}" itemLabel="instrument" />
+		<form:checkboxes path="playedInstruments" itemValue="id" items="${playedInstruments}" itemLabel="name" />
 
 		<form:checkboxes path="musicGenres" itemValue="id" items="${musicGenres}" itemLabel="genreName"/>
 

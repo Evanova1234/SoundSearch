@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <% 	response.setCharacterEncoding("UTF-8");
 	request.setCharacterEncoding("UTF-8");
@@ -22,16 +23,32 @@
 </head>
 <body>
 
-	<form:form method="post" modelAttribute="instrument">
+	<form:form method="post" modelAttribute="bandUser">
+
 
 		<div class="form-group">
-			<label for="instrument">Instrument</label> 
-			<form:input type="text" class="form-control" path="instrument" id="instrument" placeholder="Podaj nazwę instrumentu"/>
+			<label for="firstName">Dane zespołu</label>
+			<form:input type="text" class="form-control" path="bandName"
+				id="bandName" placeholder="Nazwa zespołu" />
+
+			<form:input type="date" class="form-control" path="creationDate"
+				id="creationDate" placeholder="Data założenia" />
+
+
+			<form:input type="text" class="form-control" path="bandDescription"
+				id="bandDescription" placeholder="Opis zespołu"/>
+
+			<form:input type="text" class="form-control" path="httpLink" id="httpLink"
+				placeholder="Link do strony zespołu" />
+
+			<form:input type="text" class="form-control" path="city" id="city"
+				placeholder="Miejscowość" />
 		</div>
-		<div class="form-group">
-			<label for="instrDescription">Opis instrumentu</label> 
-			<form:input type="text"	class="form-control" path="instrDescription" id="instrDescription" placeholder="Podaj opis instrumentu"/>
-		</div>
+
+		<form:checkboxes path="bandMembers" itemValue="id" items="${bandMembers}" itemLabel="lastName" />
+
+		<form:checkboxes path="musicGenres" itemValue="id" items="${musicGenres}" itemLabel="genreName" />
+
 		<button type="submit" class="btn btn-primary">Zapisz!</button>
 
 	</form:form>

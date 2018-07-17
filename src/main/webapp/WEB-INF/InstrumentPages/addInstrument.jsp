@@ -26,7 +26,7 @@
 
 		<div class="form-group">
 			<label for="instrument">Instrument</label> 
-			<form:input type="text" class="form-control" path="instrument" id="instrument" placeholder="Podaj nazwę instrumentu"/>
+			<form:input type="text" class="form-control" path="name" id="name" placeholder="Podaj nazwę instrumentu"/>
 		</div>
 		<div class="form-group">
 			<label for="instrDescription">Opis instrumentu</label> 

@@ -18,20 +18,26 @@ public class Instrument {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id; 
-	private String instrument; 
+	private String name; 
 	private String instrDescription;
 	
 	public Instrument() {
 		super();
 	}
+	
+	
 
-	public String getInstrument() {
-		return instrument;
+	public String getName() {
+		return name;
 	}
 
-	public void setInstrument(String instrument) {
-		this.instrument = instrument;
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
+
+
 
 	public String getInstrDescription() {
 		return instrDescription;

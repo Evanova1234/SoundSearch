@@ -17,6 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import pl.soundsearch.converter.InstrumentConverter;
 import pl.soundsearch.converter.MusicGenreConverter;
+import pl.soundsearch.converter.SingleUserConverter;
 
 @Configuration
 @EnableWebMvc
@@ -51,6 +52,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addConverter(getMusicGenreConverter());
 		registry.addConverter(getInstrumentConverter());
+		registry.addConverter(getSingleUserConverter());
 	}
 
 	@Bean
@@ -61,6 +63,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public InstrumentConverter getInstrumentConverter() {
 		return new InstrumentConverter();
+	}
+	
+	@Bean
+	public SingleUserConverter getSingleUserConverter() { 
+		return new SingleUserConverter(); 
 	}
 
 }

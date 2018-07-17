@@ -1,6 +1,7 @@
 package pl.soundsearch.entity;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,19 +25,85 @@ public class BandUser {
 	
 	private String bandName; 
 	
-	private LocalDate creationDate; 
+	private Date creationDate; 
 	
 	@ManyToMany
 	private List<SingleUser> bandMembers; 
 	
+	public String getBandName() {
+		return bandName;
+	}
+
+	public void setBandName(String bandName) {
+		this.bandName = bandName;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public List<SingleUser> getBandMembers() {
+		return bandMembers;
+	}
+
+	public void setBandMembers(List<SingleUser> bandMembers) {
+		this.bandMembers = bandMembers;
+	}
+
+	public String getBandDescription() {
+		return bandDescription;
+	}
+
+	public void setBandDescription(String bandDescription) {
+		this.bandDescription = bandDescription;
+	}
+
+	public List<MusicGenre> getMusicGenres() {
+		return musicGenres;
+	}
+
+	public void setMusicGenres(List<MusicGenre> musicGenres) {
+		this.musicGenres = musicGenres;
+	}
+
+	public String getHttpLink() {
+		return httpLink;
+	}
+
+	public void setHttpLink(String httpLink) {
+		this.httpLink = httpLink;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
 	private String bandDescription; 
 	
 	@ManyToMany
-	private List<MusicGenre> bandGenres; 
+	private List<MusicGenre> musicGenres; 
 	
 	private String httpLink;
 	
-	private String city; 
+	private String city;
+
+	public BandUser() {
+		super();
+	}
+
+	
 	
 	
 }
