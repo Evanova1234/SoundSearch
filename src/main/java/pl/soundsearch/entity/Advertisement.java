@@ -1,6 +1,7 @@
 package pl.soundsearch.entity;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -39,7 +40,7 @@ public class Advertisement {
 	
 	private AdStatus adStatus; 				// Advertisement's status 
 	
-	private LocalDate expirationDate;		// Advertisement's expiration date 
+	private Date expirationDate;		// Advertisement's expiration date 
 
 	public Advertisement() {
 		super();
@@ -101,11 +102,11 @@ public class Advertisement {
 		this.adStatus = adStatus;
 	}
 
-	public LocalDate getExpirationDate() {
+	public Date getExpirationDate() {
 		return expirationDate;
 	}
 
-	public void setExpirationDate(LocalDate expirationDate) {
+	public void setExpirationDate(Date expirationDate) {
 		this.expirationDate = expirationDate;
 	}
 

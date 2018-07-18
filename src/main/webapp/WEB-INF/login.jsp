@@ -33,7 +33,7 @@
 				<p>Invalid credentials!!!</p>
 			</c:if>
 
-			<form method="post" action="/modul6/login">
+			<form method="post" action="/SoundSearch/login">
 				<input type="text" name="username" placeholder="Enter username">
 				<input type="password" name="password" placeholder="Enter password">
 				<input type="hidden" 	name="${_csrf.parameterName}"
@@ -44,7 +44,7 @@
 
 		<div>
 			<h2>Register!</h2>
-			<form:form action="register" method="post" modelAttribute="singleUser">
+			<form:form method="post" action="/SoundSearch/register" modelAttribute="singleUser">
 				<form:input path="userName" placeholder="Enter username" />
 				<form:input path="password" placeholder="Enter password" type="password" />
 
