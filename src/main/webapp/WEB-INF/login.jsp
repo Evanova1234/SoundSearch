@@ -45,7 +45,7 @@
 		<div>
 			<h2>Register!</h2>
 			<form:form method="post" action="/SoundSearch/register" modelAttribute="singleUser">
-				<form:input path="userName" placeholder="Enter username" />
+				<form:input path="username" placeholder="Enter username" />
 				<form:input path="password" placeholder="Enter password" type="password" />
 
 				<input type="hidden" name="${_csrf.parameterName}"

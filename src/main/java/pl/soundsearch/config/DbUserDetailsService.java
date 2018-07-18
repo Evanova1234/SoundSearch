@@ -16,9 +16,9 @@ public class DbUserDetailsService implements UserDetailsService {
 	SingleUserRepository singleUserRepository; 
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		SingleUser singleUser = singleUserRepository.findByUserName(username); 
+		SingleUser singleUser = singleUserRepository.findByUsername(username); 
 		UserDetails userDetails = org.springframework.security.core.userdetails.User.builder()
-				.username(singleUser.getUserName())
+				.username(singleUser.getUsername())
 				.password(singleUser.getPassword())
 				.roles()
 				.build();

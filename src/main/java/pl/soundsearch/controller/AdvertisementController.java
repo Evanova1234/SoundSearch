@@ -53,7 +53,7 @@ public class AdvertisementController {
 
 		Advertisement advertisement = new Advertisement(); 
 		advertisement.setAdCategory(AdCategory.BAND_SEEKS_MUSICIAN);		
-		advertisement.setSingleUser(singleUserRepository.findByUserName(currentPrincipalName));
+		advertisement.setSingleUser(singleUserRepository.findByUsername(currentPrincipalName));
 		
 		
 		List<Instrument> playedInstruments = instrumentRepository.findAll(); 
@@ -64,8 +64,8 @@ public class AdvertisementController {
 		model.addAttribute("musicGenres", musicGenres); 
 		model.addAttribute("advertisement", advertisement); 
 		
-		List<BandUser> bandUsers = bandUserRepository.findByUserName(currentPrincipalName); 
-		model.addAttribute("bandUsers", bandUsers);
+		//List<BandUser> bandUsers = bandUserRepository.findByUser(currentPrincipalName); 
+		//model.addAttribute("bandUsers", bandUsers);
 		
 		return "AdPages/AddBandAdvert";
 		
@@ -96,13 +96,13 @@ public class AdvertisementController {
 
 		Advertisement advertisement = new Advertisement(); 
 		advertisement.setAdCategory(AdCategory.MUSICIAN_SEEKS_BAND);		
-		advertisement.setSingleUser(singleUserRepository.findByUserName(currentPrincipalName));
+		advertisement.setSingleUser(singleUserRepository.findByUsername(currentPrincipalName));
 		
 		
-		List<Instrument> playedInstruments = instrumentRepository.findInstrumentsPlayedByUser(currentPrincipalName); 
-		model.addAttribute("playedInstruments", playedInstruments); 
+		//List<Instrument> playedInstruments = instrumentRepository.findByUser(currentPrincipalName); 
+		//model.addAttribute("playedInstruments", playedInstruments); 
 		
-		List<MusicGenre> musicGenres = musicGenreRepository.findGenresPlayedByUser(currentPrincipalName); 
+		List<MusicGenre> musicGenres = musicGenreRepository.findByUsername(currentPrincipalName); 
 		
 		
 		model.addAttribute("musicGenres", musicGenres); 

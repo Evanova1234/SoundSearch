@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import pl.soundsearch.entity.Instrument;
 
 public interface InstrumentRepository extends JpaRepository<Instrument, Long> {
-	@Query(value = "", nativeQuery = true) /*MISSING SQL*/ 
-	List<Instrument> findInstrumentsPlayedByUser(String userName); 
 	
+/*	@Query(value = "", nativeQuery = true) MISSING SQL 
+	List<Instrument> findByUser(String userName); 
+	*/
 }
