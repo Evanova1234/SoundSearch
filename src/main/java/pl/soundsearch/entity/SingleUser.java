@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name="SINGLEUSER")
 
@@ -20,6 +22,13 @@ public class SingleUser {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id; 
+	
+	@NotBlank
+	private String userName; 
+
+	@NotBlank
+	private String password; 
+	
 	private String firstName; 
 	private String lastName; 
 	private Date birthDate; 
@@ -121,6 +130,22 @@ public class SingleUser {
 
 	public Long getId() {
 		return id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	} 
 	
 	

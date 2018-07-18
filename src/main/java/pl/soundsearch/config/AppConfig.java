@@ -1,6 +1,8 @@
 package pl.soundsearch.config;
 
 import javax.persistence.EntityManagerFactory;
+import javax.validation.Validator;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -9,21 +11,23 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
 import pl.soundsearch.converter.InstrumentConverter;
 import pl.soundsearch.converter.MusicGenreConverter;
 import pl.soundsearch.converter.SingleUserConverter;
+import org.springframework.context.annotation.Import;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "pl.soundsearch")
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "pl.soundsearch.repository")
+@Import(SecurityConfiguration.class)
 
 public class AppConfig extends WebMvcConfigurerAdapter {
 
@@ -49,6 +53,20 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	}
 
 	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
+	}
+
+	@Bean
+	public Validator validator() {
+		return new LocalValidatorFactoryBean();
+	}
+
+	/*********************************/
+	/*********** CONVERTERS **********/
+	/*********************************/
+
+	@Override
 	public void addFormatters(FormatterRegistry registry) {
 		registry.addConverter(getMusicGenreConverter());
 		registry.addConverter(getInstrumentConverter());
@@ -59,15 +77,15 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public MusicGenreConverter getMusicGenreConverter() {
 		return new MusicGenreConverter();
 	}
-	
+
 	@Bean
 	public InstrumentConverter getInstrumentConverter() {
 		return new InstrumentConverter();
 	}
-	
+
 	@Bean
-	public SingleUserConverter getSingleUserConverter() { 
-		return new SingleUserConverter(); 
+	public SingleUserConverter getSingleUserConverter() {
+		return new SingleUserConverter();
 	}
 
 }

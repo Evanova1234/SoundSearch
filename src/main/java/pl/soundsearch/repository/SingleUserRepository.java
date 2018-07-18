@@ -5,4 +5,7 @@ import pl.soundsearch.entity.SingleUser;
 
 public interface SingleUserRepository extends JpaRepository<SingleUser, Long>{
 
+	
+	SingleUser findByUserName(String userName); 
+	
 }
