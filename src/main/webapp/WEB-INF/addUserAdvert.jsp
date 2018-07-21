@@ -64,7 +64,7 @@ http://www.templatemo.com/tm-496-pipeline
 				<ul class="tm-main-nav-ul">
 					<li class="tm-nav-item"><a href="/SoundSearch/home"
 						class="tm-nav-item-link tm-button"> <i
-						class="fa fa-smile-o tm-nav-fa"></i>Strona Startowa
+							class="fa fa-smile-o tm-nav-fa"></i>Strona Startowa
 					</a></li>
 					<li class="tm-nav-item"><a href="/SoundSearch/editUser"
 						class="tm-nav-item-link tm-button"> <i
@@ -78,85 +78,57 @@ http://www.templatemo.com/tm-496-pipeline
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-tasks tm-nav-fa"></i>Ogłoszenia
 					</a></li>
-					
+
 				</ul>
 				</nav>
 			</div>
 
-			<div class="tm-main-content"  >
+			<div class="tm-main-content">
 
-					
-	                       
+
+
 				<div class="tm-flex">
-					<form:form method="post" modelAttribute="singleUser">
-				
-				
-						<div class="form-group">
+					<div class="form-group">
+						
+					<form:form method="post" modelAttribute="advertisement">
+							<p>
 					
-							<p>	
-							<form:input type="text" class="form-control" path="firstName" id="firstName" items="${singleUser.firstName}" 
-										placeholder="Imię"/>
+							<form:input type="text" class="form-control" path="description"
+								id="description" placeholder="Opis ogłoszenia" />
 							</p>	
 							<p>
-							<form:input type="text" class="form-control" path="lastName" id="lastName" items="${singleUser.lastName}"
-										placeholder="Nazwisko"/>
+							<form:input type="date" class="form-control" path="expirationDate"
+								id="expirationDate" placeholder="Data Ogłoszenia" />	
 							</p>	
-							<p>				
-							<form:input type="text" class="form-control" path="city" id="city" items="${singleUser.city}"
-										placeholder="Miejscowość"/>
+							<p>
+
+							<form:select multiple="true" path="instruments" itemValue="id"
+								items="${playedInstruments}" itemLabel="name" />
 							</p>	
-							<p>										
-							<form:input type="date" class="form-control" path="birthDate" id="birthDate" items="${singleUser.birthDate}"
-										placeholder="Miejscowość"/>
+							<p>
+
+							<form:select multiple="true" path="musicGenres" itemValue="id"
+								items="${musicGenres}" itemLabel="genreName" />
 							</p>	
-							<p>				
-							<form:input type="date" class="form-control" path="playingYears" id="playingYears" items="${singleUser.playingYears}"
-										placeholder="Od kiedy grasz?"/>
+							<p>
+
+							<form:input type="hidden" path="adCategory" itemValue="adCategory"
+								items="${advertisement.adCategory}" itemLabel="adCategory" />
 							</p>	
-							<p>										
-							<form:input type="text" class="form-control" path="gear" id="gear" items="${singleUser.gear}"
-										placeholder="Sprzęt, który posiadasz"/>
+							<p>
+
+							<button type="submit" class="btn btn-primary">Zapisz!</button>
 							</p>	
-							<p>				
-							<form:input type="text" class="form-control" path="description" id="description" items="${singleUser.description}"
-										placeholder="Coś o Tobie"/>
-							</p>	
-							<p>										
-							<form:input type="text" class="form-control" path="httpLink" id="httpLink" items="${singleUser.httpLink}"
-										placeholder="Link do Twojej strony"/>
-							</p>	
-							<p>							
-							<form:input type="text" class="form-control" path="username" id="username" items="${singleUser.username}"
-										placeholder="Nazwisko"/>
-							</p>	
-							<p>							
-							<form:input type="hidden" class="form-control" path="id" id="id" items="${singleUser.id}" 
-										placeholder="Id"/>
-							</p>	
-							<p>							
-							<form:input type="hidden" class="form-control" path="password" id="password" items="${singleUser.password}" 
-										placeholder="Nazwisko"/>
-							
-						
-						</div>
-				
-						<form:checkboxes path="playedInstruments" itemValue="id" items="${playedInstruments}" itemLabel="name" />
-				
-						<form:checkboxes path="musicGenres" itemValue="id" items="${musicGenres}" itemLabel="genreName"/>
-				
-						<button type="submit" class="tm-button tm-button-normal">Zapisz!</button>
-				
+
 					</form:form>
-         
-         
-					  
-         	           </div>
 
-                   
-        </div>
-        
-         
-      
+					</div>
+					
 
-    </body>
-    </html>
+
+				</div>
+
+
+			</div>
+</body>
+</html>

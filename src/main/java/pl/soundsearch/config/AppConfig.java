@@ -18,6 +18,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import pl.soundsearch.converter.BandUserConverter;
 import pl.soundsearch.converter.InstrumentConverter;
 import pl.soundsearch.converter.MusicGenreConverter;
 import pl.soundsearch.converter.SingleUserConverter;
@@ -77,6 +79,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		registry.addConverter(getMusicGenreConverter());
 		registry.addConverter(getInstrumentConverter());
 		registry.addConverter(getSingleUserConverter());
+		registry.addConverter(getBandUserConverter());
 	}
 
 	@Bean
@@ -93,5 +96,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public SingleUserConverter getSingleUserConverter() {
 		return new SingleUserConverter();
 	}
+	
+	@Bean
+	public BandUserConverter getBandUserConverter() { 
+		return new BandUserConverter(); 
+		
+	}
+	
 
 }

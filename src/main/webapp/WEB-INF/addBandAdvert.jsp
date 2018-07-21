@@ -102,12 +102,12 @@ http://www.templatemo.com/tm-496-pipeline
 							</p>	
 							<p>
 
-						<form:checkboxes path="instruments" itemValue="id" 
+						<form:select multiple="true" path="instruments" itemValue="id" 
 							items="${playedInstruments}" itemLabel="name" />
 							</p>	
 							<p>
 
-						<form:checkboxes path="musicGenres" itemValue="id" 
+						<form:select multiple="true" path="musicGenres" itemValue="id" 
 							items="${musicGenres}" itemLabel="genreName"/>
 							</p>	
 							<p>
@@ -121,9 +121,11 @@ http://www.templatemo.com/tm-496-pipeline
 							items="${advertisement.adCategory}" itemLabel="adCategory"/>
 							</p>	
 							<p>
-		
-						<button type="submit" class="tm-button tm-button-normal">Zapisz!</button>
+							
 
+		
+									<button type="submit" class="tm-button tm-button-normal">Zapisz!</button>
+							</p>
 					</form:form>
          					  
          	  </div>

@@ -84,7 +84,10 @@ public class AdvertisementController {
 	@RequestMapping(value = "/addBandAd", method = RequestMethod.POST)
 	String addBandAdv(Model model, @ModelAttribute Advertisement advertisement) { 
 		
-		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		SingleUser singleUser = singleUserRepository.findByUsername(currentPrincipalName); 
+		advertisement.setSingleUser(singleUser);
 		advertisementRepository.save(advertisement); 
 	
 		
@@ -112,7 +115,7 @@ public class AdvertisementController {
 		model.addAttribute("musicGenres", musicGenres); 
 		model.addAttribute("advertisement", advertisement); 
 	
-		return "AdPages/AddUserAdvert";
+		return "addUserAdvert";
 		
 	}
 	

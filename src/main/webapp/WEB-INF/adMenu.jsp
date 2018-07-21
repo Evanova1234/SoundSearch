@@ -92,7 +92,7 @@ http://www.templatemo.com/tm-496-pipeline
                             <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
                                 <h2 class="tm-section-title">Dodaj Ogłoszenie</h2>
                                 <p>
-            						  <a href="#" class="tm-button tm-button-normal">Muzyk szuka Zespołu</a>
+            						  <a href="addUserAd" class="tm-button tm-button-normal">Muzyk szuka Zespołu</a>
 								</p>
 								<p>            				
             						  <a href="addBandAd" class="tm-button tm-button-normal">Zespół szuka Muzyka</a>    	     
