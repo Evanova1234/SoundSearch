@@ -15,6 +15,7 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import pl.soundsearch.converter.InstrumentConverter;
@@ -36,6 +37,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		LocalEntityManagerFactoryBean emfb = new LocalEntityManagerFactoryBean();
 		emfb.setPersistenceUnitName("soundsearchdbPersistenceUnit");
 		return emfb;
+	}
+
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/static/");
 	}
 
 	@Bean

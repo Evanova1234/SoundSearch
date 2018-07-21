@@ -10,10 +10,9 @@ import pl.soundsearch.entity.MusicGenre;
 public interface MusicGenreRepository extends JpaRepository<MusicGenre, Long> {
 
 	
-	@Query(value = "select * from GENRE AS GE "
-			+ "LEFT JOIN SINGLEUSER_GENRE AS SU_G ON GE.id = SU_G.musicGenres_id"
-			+ "LEFT JOIN SINGLEUSER AS SU ON SU_G.SingleUser_id = SU.id"
-			+ "WHERE SU.userName = :username;", nativeQuery = true) 
-	List<MusicGenre> findByUsername(@Param("username") String username); 
+	@Query(value = "Select * from GENRE AS GEN "
+			+ "LEFT JOIN SINGLEUSER_GENRE AS SU_G ON GEN.id = SU_G.musicGenres_id "
+			+ "WHERE SU_G.SingleUser_id = :userId", nativeQuery = true)   
+	List<MusicGenre> findByUser(@Param("userId") Long userId); 
 
 }

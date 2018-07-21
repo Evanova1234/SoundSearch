@@ -1,7 +1,6 @@
 package pl.soundsearch.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import pl.soundsearch.entity.AdCategory;
 import pl.soundsearch.entity.Advertisement;
 import pl.soundsearch.entity.BandUser;
@@ -53,22 +51,18 @@ public class AdvertisementController {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
-
 		Advertisement advertisement = new Advertisement(); 
 		advertisement.setAdCategory(AdCategory.BAND_SEEKS_MUSICIAN);		
-		advertisement.setSingleUser(singleUserRepository.findByUsername(currentPrincipalName));
 		
-		
-		List<Instrument> playedInstruments = instrumentRepository.findAll(); 
+		SingleUser singleUser = singleUserRepository.findByUsername(currentPrincipalName); 
+		advertisement.setSingleUser(singleUser);
+		List<Instrument> playedInstruments = instrumentRepository.findAll();
 		model.addAttribute("playedInstruments", playedInstruments); 
-		
 		List<MusicGenre> musicGenres = musicGenreRepository.findAll(); 
-		
 		model.addAttribute("musicGenres", musicGenres); 
 		model.addAttribute("advertisement", advertisement); 
-		
-		//List<BandUser> bandUsers = bandUserRepository.findByUser(currentPrincipalName); 
-		//model.addAttribute("bandUsers", bandUsers);
+		List<BandUser> bandUsers = bandUserRepository.findByUser(singleUser.getId()); 
+		model.addAttribute("bandUsers", bandUsers);
 		
 		return "AdPages/AddBandAdvert";
 		
@@ -96,24 +90,17 @@ public class AdvertisementController {
 
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String currentPrincipalName = authentication.getName();
-
+		SingleUser singleUser = singleUserRepository.findByUsername(currentPrincipalName); 	
 		Advertisement advertisement = new Advertisement(); 
 		advertisement.setAdCategory(AdCategory.MUSICIAN_SEEKS_BAND);		
 		advertisement.setSingleUser(singleUserRepository.findByUsername(currentPrincipalName));
-		
-		
-		//List<Instrument> playedInstruments = instrumentRepository.findByUser(currentPrincipalName); 
-		//model.addAttribute("playedInstruments", playedInstruments); 
-		
-		List<MusicGenre> musicGenres = musicGenreRepository.findByUsername(currentPrincipalName); 
-		
-		
+		List<Instrument> playedInstruments = instrumentRepository.findByUser(singleUser.getId()); 
+		model.addAttribute("playedInstruments", playedInstruments); 
+		List<MusicGenre> musicGenres = musicGenreRepository.findByUser(singleUser.getId()); 
 		model.addAttribute("musicGenres", musicGenres); 
 		model.addAttribute("advertisement", advertisement); 
-		
-		
-		
-		return "AdPages/AddBandAdvert";
+	
+		return "AdPages/AddUserAdvert";
 		
 	}
 	
@@ -144,30 +131,16 @@ public class AdvertisementController {
 	/*************************************************************************************/
 	/******************************LIST ADVERTISEMENTS************************************/
 	/*************************************************************************************/
-	@RequestMapping(value = "/adList", method = RequestMethod.GET)
+	@RequestMapping(value = "/allAdList", method = RequestMethod.GET)
 	String adList(Model model) { 
 
 		List<Advertisement> adList = advertisementRepository.findAll(); 
 		model.addAttribute("adList",adList); 
-		return "AdPages/listAdvertisements";
+		return "listAdvertisements";
 		
 	}
 	
-	
-	/*************************************************************************************/
-	/******************************ADVERTISEMENTS DETAILS*********************************/
-	/*************************************************************************************/
-	@RequestMapping(value = "/adDetails/{id}", method = RequestMethod.GET)
-	String adDetails(@PathVariable String id, Model model) { 
-		
-		Advertisement advertisement = advertisementRepository.findOne(Long.getLong(id)); 
-		model.addAttribute("advertisement",advertisement); 
-		return "AdPages/adDetails";
-		
-	}
-	
-	
-	
+
 	
 	
 	

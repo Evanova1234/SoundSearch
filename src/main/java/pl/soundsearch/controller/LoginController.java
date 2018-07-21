@@ -3,7 +3,6 @@ package pl.soundsearch.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +18,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import pl.soundsearch.entity.Instrument;
 import pl.soundsearch.entity.MusicGenre;
 import pl.soundsearch.entity.SingleUser;
@@ -65,7 +63,6 @@ public class LoginController {
 		if (result.hasErrors()) {
 			return "redirect:/login";
 		}
-		singleUser.setPassword(passwordEncoder.encode(singleUser.getPassword()));
 		String rawPassword = singleUser.getPassword();
 		singleUser.setPassword(passwordEncoder.encode(rawPassword));
 		singleUserRepository.save(singleUser);

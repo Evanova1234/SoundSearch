@@ -1,70 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<% 	response.setCharacterEncoding("UTF-8");
-	request.setCharacterEncoding("UTF-8");
-%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
+<!-- taglibs are not ignored -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<html lang="pl_PL">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap 101 Template</title>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
+<title>Pipeline Bootstrap 4.0 Theme</title>
+<!--
+Pipeline
+http://www.templatemo.com/tm-496-pipeline
+-->
+<!-- load stylesheets -->
+<link href='<spring:url value="/resources/css/styleFront.css"/>'
+	rel="stylesheet" />
+<link
+	href='<spring:url value="//fonts.googleapis.com/css?family=Open+Sans:300,400"/>'
+	rel="stylesheet" />
+<!-- Google web font "Open Sans", https://fonts.google.com/ -->
+<link href='<spring:url value="/resources/css/styleFront.css"/>'
+	rel="stylesheet" />
+<!-- Font Awesome, http://fontawesome.io/ -->
+<link
+	href='<spring:url value="/resources/font-awesome-4.6.3/css/font-awesome.min.css"/>'
+	rel="stylesheet" />
+<link href='<spring:url value="/resources/css/bootstrap.min.css"/>'
+	rel="stylesheet" />
+<!-- Bootstrap style, http://v4-alpha.getbootstrap.com/ -->
+<link href='<spring:url value="/resources/css/magnific-popup.css"/>'
+	rel="stylesheet" />
+<!-- Magnific pop up style, http://dimsemenov.com/plugins/magnific-popup/ -->
+<link href='<spring:url value="/resources/css/templatemo-style.css"/>'
+	rel="stylesheet" />
+<!-- Templatemo style -->
 
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+          <![endif]-->
 </head>
+
 <body>
+	<div class="container-fluid">
 
-	<div>
-
-		<div>
-			<h2>Login!</h2>
-			<c:if test="${param.error != null}">
-				<p>Invalid credentials!!!</p>
-			</c:if>
-
-			<form method="post" action="/SoundSearch/login">
-				<input type="text" name="username" placeholder="Enter username">
-				<input type="password" name="password" placeholder="Enter password">
-				<input type="hidden" 	name="${_csrf.parameterName}"
-										value="${_csrf.token}"/> 
-				<input type="submit" value="Log in">
-			</form>
+		<section id="welcome" class="tm-content-box tm-banner margin-b-10">
+		<div class="tm-banner-inner">
+			<h1 class="tm-banner-title">Pipeline</h1>
 		</div>
+		</section>
 
-		<div>
-			<h2>Register!</h2>
-			<form:form method="post" action="/SoundSearch/register" modelAttribute="singleUser">
-				<form:input path="username" placeholder="Enter username" />
-				<form:input path="password" placeholder="Enter password" type="password" />
+		<div class="tm-body">
+			<div class="tm-sidebar">
+				<nav class="tm-main-nav">
+				<ul class="tm-main-nav-ul">
+					<li class="tm-nav-item"><a href="#welcome"
+						class="tm-nav-item-link tm-button"> <i
+							class="fa fa-smile-o tm-nav-fa"></i>Welcome
+					</a></li>
+					<li class="tm-nav-item"><a href="#gallery"
+						class="tm-nav-item-link tm-button"> <i
+							class="fa fa-image tm-nav-fa"></i>Image Gallery
+					</a></li>
+					<li class="tm-nav-item"><a href="#services"
+						class="tm-nav-item-link tm-button"> <i
+							class="fa fa-tasks tm-nav-fa"></i>Our Services
+					</a></li>
+					<li class="tm-nav-item"><a href="#about"
+						class="tm-nav-item-link tm-button"> <i
+							class="fa fa-sitemap tm-nav-fa"></i>About Company
+					</a></li>
+					<li class="tm-nav-item"><a href="#contact"
+						class="tm-nav-item-link tm-button"> <i
+							class="fa fa-envelope-o tm-nav-fa"></i>Contact Us
+					</a></li>
+				</ul>
+				</nav>
+			</div>
 
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
+			<div class="tm-main-content"  >
 
-				<input type="submit" value="Register">
-			</form:form>
-		</div>
+					
+	                       
+                        <div class="tm-flex">
+                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
+                                <h2 class="tm-section-title">Logowanie</h2>
+                                <p>
+            						<c:if test="${param.error != null}">
+									<p>Invalid credentials!!!</p>
+									</c:if>
+					           		<form method="post" action="/SoundSearch/login">
+										<input type="text" name="username" placeholder="Enter username">
+										<input type="password" name="password" placeholder="Enter password" type="password"/>
+										<input type="hidden" name="${_csrf.parameterName}"
+														value="${_csrf.token}" /> 
+										<input class="tm-button tm-button-normal" type="submit" value="Log in">
+									</form>                   
+                                </p>
+                            </div>
+                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
+                                <h2 class="tm-section-title">Rejestracja</h2>
+                                <p>
+									<form:form method="post" action="/SoundSearch/register"
+										modelAttribute="singleUser">
+										<form:input path="username" placeholder="Enter username" />
+										<form:input path="password" placeholder="Enter password"
+											type="password" />
+										<input type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}" />
+										<input class="tm-button tm-button-normal" type="submit"
+											value="Register">
+									</form:form>
+								</p>
+                            </div>    
+					  
+                    </div>
 
-		
+                   
+        </div>
+        
+        <!-- load JS files -->
+        
+        <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+        <script
+		src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap (http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h) -->
+        <script src="js/jquery.magnific-popup.min.js"></script>     <!-- Magnific pop-up (http://dimsemenov.com/plugins/magnific-popup/) -->
+        <script src="js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+        
+      
 
-
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script
-			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-			integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-			crossorigin="anonymous"></script>
-</body>
-</html>
+    </body>
+    </html>

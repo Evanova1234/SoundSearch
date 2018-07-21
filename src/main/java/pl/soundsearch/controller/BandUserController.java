@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import pl.soundsearch.entity.AdCategory;
 import pl.soundsearch.entity.BandUser;
 import pl.soundsearch.entity.MusicGenre;
 import pl.soundsearch.entity.SingleUser;
