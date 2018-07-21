@@ -7,9 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.encoding.PasswordEncoder;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,9 +35,9 @@ public class LoginController {
 	private SingleUserRepository singleUserRepository;
 
 
-/*	@Autowired 
+	@Autowired 
 	private PasswordEncoder passwordEncoder;
-*/
+	
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -62,9 +65,22 @@ public class LoginController {
 		if (result.hasErrors()) {
 			return "redirect:/login";
 		}
-		
+		singleUser.setPassword(passwordEncoder.encode(singleUser.getPassword()));
+		String rawPassword = singleUser.getPassword();
+		singleUser.setPassword(passwordEncoder.encode(rawPassword));
 		singleUserRepository.save(singleUser);
-		return "home";
+
+		/**
+		 * Automatyczne logowanie po rejestracji
+		 */
+		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(singleUser.getUsername(),
+				rawPassword);
+		authToken.setDetails(new WebAuthenticationDetails(request));
+
+		Authentication authentication = authenticationManager.authenticate(authToken);
+
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		return "redirect:/home";
 	}
 
 }

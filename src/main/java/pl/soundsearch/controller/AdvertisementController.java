@@ -1,6 +1,7 @@
 package pl.soundsearch.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pl.soundsearch.entity.AdCategory;
 import pl.soundsearch.entity.Advertisement;
 import pl.soundsearch.entity.BandUser;
@@ -136,6 +139,37 @@ public class AdvertisementController {
 		binder.registerCustomEditor(Date.class, new Test(simpleDate,true));
 		
 	}
+
+	
+	/*************************************************************************************/
+	/******************************LIST ADVERTISEMENTS************************************/
+	/*************************************************************************************/
+	@RequestMapping(value = "/adList", method = RequestMethod.GET)
+	String adList(Model model) { 
+
+		List<Advertisement> adList = advertisementRepository.findAll(); 
+		model.addAttribute("adList",adList); 
+		return "AdPages/listAdvertisements";
+		
+	}
+	
+	
+	/*************************************************************************************/
+	/******************************ADVERTISEMENTS DETAILS*********************************/
+	/*************************************************************************************/
+	@RequestMapping(value = "/adDetails/{id}", method = RequestMethod.GET)
+	String adDetails(@PathVariable String id, Model model) { 
+		
+		Advertisement advertisement = advertisementRepository.findOne(Long.getLong(id)); 
+		model.addAttribute("advertisement",advertisement); 
+		return "AdPages/adDetails";
+		
+	}
+	
+	
+	
+	
+	
 	
 
 }
