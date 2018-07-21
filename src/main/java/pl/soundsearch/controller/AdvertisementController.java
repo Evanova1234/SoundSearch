@@ -39,6 +39,18 @@ public class AdvertisementController {
 	MusicGenreRepository musicGenreRepository; 
 	@Autowired
 	AdvertisementRepository advertisementRepository; 
+
+	/*************************************************************************************/
+	/******************************ADDING NEW ADVERTISEMENT BY BAND***********************/
+	/*************************************************************************************/
+
+	@RequestMapping(value = "/adMenu", method = RequestMethod.GET)
+	String adMenu() { 
+			
+		return "adMenu";
+		
+	}
+	
 	
 	/*************************************************************************************/
 	/******************************ADDING NEW ADVERTISEMENT BY BAND***********************/
@@ -64,7 +76,7 @@ public class AdvertisementController {
 		List<BandUser> bandUsers = bandUserRepository.findByUser(singleUser.getId()); 
 		model.addAttribute("bandUsers", bandUsers);
 		
-		return "AdPages/AddBandAdvert";
+		return "addBandAdvert";
 		
 	}
 	
@@ -116,8 +128,35 @@ public class AdvertisementController {
 		
 	}
 	
+		
+	/*************************************************************************************/
+	/******************************MUSICIAN SEEKS BAND************************************/
+	/*************************************************************************************/
+	@RequestMapping(value = "/adMusicianSeeksList", method = RequestMethod.GET)
+	String adMusicianSeeksList(Model model) { 
+
+		List<Advertisement> adList = advertisementRepository.findWhereMusicianSeeksBand(); 
+		model.addAttribute("adList",adList); 
+		return "adMusicianSeeksList";
+		
+	}
 	
-	
+	/*************************************************************************************/
+	/******************************BAND SEEKS MUSICIAN************************************/
+	/*************************************************************************************/
+	@RequestMapping(value = "/adBandSeeksList", method = RequestMethod.GET)
+	String adBdSeeksList(Model model) { 
+
+		List<Advertisement> adList = advertisementRepository.findWhereBandSeeksMusician(); 
+		model.addAttribute("adList",adList); 
+		return "adBandSeeksList";
+		
+	}
+
+	/*************************************************************************************/
+	/******************************DATE INIT BINDER***************************************/
+	/*************************************************************************************/
+
 	
 	@InitBinder
 	public void bind(WebDataBinder binder) { 
@@ -126,23 +165,6 @@ public class AdvertisementController {
 		binder.registerCustomEditor(Date.class, new Test(simpleDate,true));
 		
 	}
-
-	
-	/*************************************************************************************/
-	/******************************LIST ADVERTISEMENTS************************************/
-	/*************************************************************************************/
-	@RequestMapping(value = "/allAdList", method = RequestMethod.GET)
-	String adList(Model model) { 
-
-		List<Advertisement> adList = advertisementRepository.findAll(); 
-		model.addAttribute("adList",adList); 
-		return "listAdvertisements";
-		
-	}
-	
-
-	
-	
 	
 
 }

@@ -87,41 +87,47 @@ http://www.templatemo.com/tm-496-pipeline
 
 					
 	                       
-                        <div class="tm-flex">
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Logowanie</h2>
-                                <p>
-            						<c:if test="${param.error != null}">
-									<p>Invalid credentials!!!</p>
-									</c:if>
-					           		<form method="post" action="/SoundSearch/login">
-										<input type="text" name="username" placeholder="Enter username">
-										<input type="password" name="password" placeholder="Enter password" type="password"/>
-										<input type="hidden" name="${_csrf.parameterName}"
-														value="${_csrf.token}" /> 
-										<input class="tm-button tm-button-normal" type="submit" value="Log in">
-									</form>                   
-                                </p>
-                            </div>
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Rejestracja</h2>
-                                <p>
-									<form:form method="post" action="/SoundSearch/register"
-										modelAttribute="singleUser">
-										<form:input path="username" placeholder="Enter username" />
-										<form:input path="password" placeholder="Enter password"
-											type="password" />
-										<input type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}" />
-										<input class="tm-button tm-button-normal" type="submit"
-											value="Register">
-									</form:form>
-								</p>
-                            </div>    
-					  
-                    </div>
+				<div class="tm-flex">
+					
+					<form:form method="post" modelAttribute="advertisement">
 
-                   
+						<p>	
+						<form:input type="text" class="form-control" path="description" id="description" 
+							placeholder="Opis ogłoszenia"/>
+							</p>	
+							<p>
+			
+						<form:input type="date" class="form-control" path="expirationDate" id="expirationDate" 
+							placeholder="Data Ogłoszenia"/>
+							</p>	
+							<p>
+
+						<form:checkboxes path="instruments" itemValue="id" 
+							items="${playedInstruments}" itemLabel="name" />
+							</p>	
+							<p>
+
+						<form:checkboxes path="musicGenres" itemValue="id" 
+							items="${musicGenres}" itemLabel="genreName"/>
+							</p>	
+							<p>
+
+						<form:checkboxes path="bandUser" itemValue="id" 
+							items="${bandUsers}" itemLabel="bandName"/>
+							</p>	
+							<p>
+		
+						<form:input type="hidden" path="adCategory" itemValue="adCategory" 
+							items="${advertisement.adCategory}" itemLabel="adCategory"/>
+							</p>	
+							<p>
+		
+						<button type="submit" class="tm-button tm-button-normal">Zapisz!</button>
+
+					</form:form>
+         					  
+         	  </div>
+          
         </div>
         
          

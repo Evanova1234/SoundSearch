@@ -88,43 +88,23 @@ http://www.templatemo.com/tm-496-pipeline
 					
 	                       
                         <div class="tm-flex">
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Logowanie</h2>
-                                <p>
-            						<c:if test="${param.error != null}">
-									<p>Invalid credentials!!!</p>
-									</c:if>
-					           		<form method="post" action="/SoundSearch/login">
-										<input type="text" name="username" placeholder="Enter username">
-										<input type="password" name="password" placeholder="Enter password" type="password"/>
-										<input type="hidden" name="${_csrf.parameterName}"
-														value="${_csrf.token}" /> 
-										<input class="tm-button tm-button-normal" type="submit" value="Log in">
-									</form>                   
-                                </p>
-                            </div>
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Rejestracja</h2>
-                                <p>
-									<form:form method="post" action="/SoundSearch/register"
-										modelAttribute="singleUser">
-										<form:input path="username" placeholder="Enter username" />
-										<form:input path="password" placeholder="Enter password"
-											type="password" />
-										<input type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}" />
-										<input class="tm-button tm-button-normal" type="submit"
-											value="Register">
-									</form:form>
-								</p>
-                            </div>    
+                           
+                         Witaj na stronie. Jesteś zalogowany. Rozpocznij od uzupełnienia swoich danych osobowych. 
+                         Potem możesz przejść do utworzenia zespołu i/lub ogłoszenia. 
 					  
                     </div>
 
                    
         </div>
         
-         
+        <!-- load JS files -->
+        
+        <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+        <script
+		src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap (http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h) -->
+        <script src="js/jquery.magnific-popup.min.js"></script>     <!-- Magnific pop-up (http://dimsemenov.com/plugins/magnific-popup/) -->
+        <script src="js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+        
       
 
     </body>

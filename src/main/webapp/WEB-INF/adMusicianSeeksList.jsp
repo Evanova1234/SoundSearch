@@ -87,42 +87,26 @@ http://www.templatemo.com/tm-496-pipeline
 
 					
 	                       
-                        <div class="tm-flex">
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Logowanie</h2>
-                                <p>
-            						<c:if test="${param.error != null}">
-									<p>Invalid credentials!!!</p>
-									</c:if>
-					           		<form method="post" action="/SoundSearch/login">
-										<input type="text" name="username" placeholder="Enter username">
-										<input type="password" name="password" placeholder="Enter password" type="password"/>
-										<input type="hidden" name="${_csrf.parameterName}"
-														value="${_csrf.token}" /> 
-										<input class="tm-button tm-button-normal" type="submit" value="Log in">
-									</form>                   
-                                </p>
-                            </div>
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Rejestracja</h2>
-                                <p>
-									<form:form method="post" action="/SoundSearch/register"
-										modelAttribute="singleUser">
-										<form:input path="username" placeholder="Enter username" />
-										<form:input path="password" placeholder="Enter password"
-											type="password" />
-										<input type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}" />
-										<input class="tm-button tm-button-normal" type="submit"
-											value="Register">
-									</form:form>
-								</p>
-                            </div>    
+				<div class="tm-flex">
+					
+         	<table>
+				<tr>
+					<th>Autor</th>
+					<th>Ogłoszenie</th>
+				</tr>
+				<c:forEach items="${adList}" var="ad">
+				<tr>
+					<td>${ad.singleUser.firstName} ${ad.singleUser.lastName}</td>
+					<td>${ad.description}</td>
+					
+				</tr>
+				</c:forEach>
+			</table>
 					  
-                    </div>
+         	    </div>
 
                    
-        </div>
+        	</div>
         
          
       

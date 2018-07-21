@@ -25,7 +25,6 @@
 			
 			<form:input type="date" class="form-control" path="expirationDate" id="expirationDate" 
 						placeholder="Data Ogłoszenia"/>
-		</div>
 
 		<form:checkboxes path="instruments" itemValue="id" items="${playedInstruments}" itemLabel="name" />
 
@@ -34,6 +33,7 @@
 		<form:checkboxes path="bandUser" itemValue="id" items="${bandUsers}" itemLabel="bandName"/>
 		<form:input path="adCategory" itemValue="adCategory" items="${advertisement.adCategory}" itemLabel="adCategory"/>
 		<button type="submit" class="btn btn-primary">Zapisz!</button>
+		</div>
 
 	</form:form>
 

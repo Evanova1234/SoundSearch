@@ -74,7 +74,7 @@ http://www.templatemo.com/tm-496-pipeline
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-image tm-nav-fa"></i>Zespoły
 					</a></li>
-					<li class="tm-nav-item"><a href="/SoundSearch/adMenu"
+					<li class="tm-nav-item"><a href="#services"
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-tasks tm-nav-fa"></i>Ogłoszenia
 					</a></li>
@@ -88,37 +88,29 @@ http://www.templatemo.com/tm-496-pipeline
 					
 	                       
                         <div class="tm-flex">
+
                             <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Logowanie</h2>
+                                <h2 class="tm-section-title">Dodaj Ogłoszenie</h2>
                                 <p>
-            						<c:if test="${param.error != null}">
-									<p>Invalid credentials!!!</p>
-									</c:if>
-					           		<form method="post" action="/SoundSearch/login">
-										<input type="text" name="username" placeholder="Enter username">
-										<input type="password" name="password" placeholder="Enter password" type="password"/>
-										<input type="hidden" name="${_csrf.parameterName}"
-														value="${_csrf.token}" /> 
-										<input class="tm-button tm-button-normal" type="submit" value="Log in">
-									</form>                   
+            						  <a href="#" class="tm-button tm-button-normal">Muzyk szuka Zespołu</a>
+								</p>
+								<p>            				
+            						  <a href="addBandAd" class="tm-button tm-button-normal">Zespół szuka Muzyka</a>    	     
                                 </p>
                             </div>
                             <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Rejestracja</h2>
+                                <h2 class="tm-section-title">Przeglądaj Ogłoszenia</h2>
                                 <p>
-									<form:form method="post" action="/SoundSearch/register"
-										modelAttribute="singleUser">
-										<form:input path="username" placeholder="Enter username" />
-										<form:input path="password" placeholder="Enter password"
-											type="password" />
-										<input type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}" />
-										<input class="tm-button tm-button-normal" type="submit"
-											value="Register">
-									</form:form>
+            						  <a href="adMusicianSeeksList" class="tm-button tm-button-normal">Muzyk szuka zespołu</a><br>
+								</p>
+								<p>
+            						  <a href="#" class="tm-button tm-button-normal">Zespół szuka Muzyka</a><br>
+								</p>
+								<p>
+            						  <a href="#" class="tm-button tm-button-normal">Szukaj Konkretnych</a>    									
 								</p>
                             </div>    
-					  
+
                     </div>
 
                    

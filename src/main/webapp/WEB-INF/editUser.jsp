@@ -87,39 +87,70 @@ http://www.templatemo.com/tm-496-pipeline
 
 					
 	                       
-                        <div class="tm-flex">
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Logowanie</h2>
-                                <p>
-            						<c:if test="${param.error != null}">
-									<p>Invalid credentials!!!</p>
-									</c:if>
-					           		<form method="post" action="/SoundSearch/login">
-										<input type="text" name="username" placeholder="Enter username">
-										<input type="password" name="password" placeholder="Enter password" type="password"/>
-										<input type="hidden" name="${_csrf.parameterName}"
-														value="${_csrf.token}" /> 
-										<input class="tm-button tm-button-normal" type="submit" value="Log in">
-									</form>                   
-                                </p>
-                            </div>
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Rejestracja</h2>
-                                <p>
-									<form:form method="post" action="/SoundSearch/register"
-										modelAttribute="singleUser">
-										<form:input path="username" placeholder="Enter username" />
-										<form:input path="password" placeholder="Enter password"
-											type="password" />
-										<input type="hidden" name="${_csrf.parameterName}"
-											value="${_csrf.token}" />
-										<input class="tm-button tm-button-normal" type="submit"
-											value="Register">
-									</form:form>
-								</p>
-                            </div>    
+				<div class="tm-flex">
+					<form:form method="post" modelAttribute="singleUser">
+				
+				
+						<div class="form-group">
+					
+							<p>	
+							<form:input type="text" class="form-control" path="firstName" id="firstName" items="${singleUser.firstName}" 
+										placeholder="Imię"/>
+							</p>	
+							<p>
+							<form:input type="text" class="form-control" path="lastName" id="lastName" items="${singleUser.lastName}"
+										placeholder="Nazwisko"/>
+							</p>	
+							<p>				
+							<form:input type="text" class="form-control" path="city" id="city" items="${singleUser.city}"
+										placeholder="Miejscowość"/>
+							</p>	
+							<p>										
+							<form:input type="date" class="form-control" path="birthDate" id="birthDate" items="${singleUser.birthDate}"
+										placeholder="Miejscowość"/>
+							</p>	
+							<p>				
+							<form:input type="date" class="form-control" path="playingYears" id="playingYears" items="${singleUser.playingYears}"
+										placeholder="Od kiedy grasz?"/>
+							</p>	
+							<p>										
+							<form:input type="text" class="form-control" path="gear" id="gear" items="${singleUser.gear}"
+										placeholder="Sprzęt, który posiadasz"/>
+							</p>	
+							<p>				
+							<form:input type="text" class="form-control" path="description" id="description" items="${singleUser.description}"
+										placeholder="Coś o Tobie"/>
+							</p>	
+							<p>										
+							<form:input type="text" class="form-control" path="httpLink" id="httpLink" items="${singleUser.httpLink}"
+										placeholder="Link do Twojej strony"/>
+							</p>	
+							<p>							
+							<form:input type="text" class="form-control" path="username" id="username" items="${singleUser.username}"
+										placeholder="Nazwisko"/>
+							</p>	
+							<p>							
+							<form:input type="hidden" class="form-control" path="id" id="id" items="${singleUser.id}" 
+										placeholder="Id"/>
+							</p>	
+							<p>							
+							<form:input type="hidden" class="form-control" path="password" id="password" items="${singleUser.password}" 
+										placeholder="Nazwisko"/>
+							
+						
+						</div>
+				
+						<form:checkboxes path="playedInstruments" itemValue="id" items="${playedInstruments}" itemLabel="name" />
+				
+						<form:checkboxes path="musicGenres" itemValue="id" items="${musicGenres}" itemLabel="genreName"/>
+				
+						<button type="submit" class="tm-button tm-button-normal">Zapisz!</button>
+				
+					</form:form>
+         
+         
 					  
-                    </div>
+         	           </div>
 
                    
         </div>

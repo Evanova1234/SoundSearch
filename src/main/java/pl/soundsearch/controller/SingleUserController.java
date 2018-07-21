@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -32,19 +34,23 @@ public class SingleUserController {
 	/******************************SAVING NEW SINGLE USER*********************************/
 	/*************************************************************************************/
 
-	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
+	@RequestMapping(value = "/editUser", method = RequestMethod.GET)
 	public String addSingleUser(Model model) { 
 		List<Instrument> playedInstruments = instrumentRepository.findAll(); 
 		List<MusicGenre> musicGenres = musicGenreRepository.findAll(); 
-		SingleUser singleUser = new SingleUser(); 
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();		
+		SingleUser singleUser = singleUserRepository.findByUsername(currentPrincipalName); 
 		model.addAttribute("playedInstruments", playedInstruments); 
 		model.addAttribute("musicGenres", musicGenres); 
 		model.addAttribute("singleUser", singleUser); 
-		return "SingleUserPages/addUser"; 
+		return "editUser"; 
 	}
 	
-	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/editUser", method = RequestMethod.POST)
 	public String addSingleUser(Model model, @ModelAttribute SingleUser singleUser) { 
+	
 		
 		singleUserRepository.save(singleUser); 
 		return "Udalo sie";

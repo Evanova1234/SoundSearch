@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,7 +40,7 @@ public class SingleUser {
 	private String description; 
 	private String httpLink;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Instrument> playedInstruments; 
 	
 	@ManyToMany
@@ -148,6 +150,10 @@ public class SingleUser {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	} 
 	
 	

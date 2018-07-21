@@ -51,7 +51,7 @@ public class LoginController {
 		if (SecurityContextHolder.getContext().getAuthentication().isAuthenticated()
 				&& !(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken)) {
 
-			return "redirect:/home";
+			return "home";
 		}
 
 		model.addAttribute(new SingleUser()); 
@@ -77,7 +77,7 @@ public class LoginController {
 		Authentication authentication = authenticationManager.authenticate(authToken);
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		return "redirect:/home";
+		return "home";
 	}
 
 }
