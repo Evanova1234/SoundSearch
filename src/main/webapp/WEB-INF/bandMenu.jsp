@@ -74,7 +74,7 @@ http://www.templatemo.com/tm-496-pipeline
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-image tm-nav-fa"></i>Zespoły
 					</a></li>
-					<li class="tm-nav-item"><a href="#services"
+					<li class="tm-nav-item"><a href="/SoundSearch/adMenu"
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-tasks tm-nav-fa"></i>Ogłoszenia
 					</a></li>
@@ -86,35 +86,34 @@ http://www.templatemo.com/tm-496-pipeline
 			<div class="tm-main-content"  >
 
 					
+					
+					<div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
+                                
+                                <p>
+            						  <a href="addUserAd" class="tm-button tm-button-normal">Dodaj Zespół</a>
+								</p>
+                </div>
 	                       
-                        <div class="tm-flex">
-
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Dodaj Ogłoszenie</h2>
-                                <p>
-            						  <a href="addUserAd" class="tm-button tm-button-normal">Muzyk szuka Zespołu</a>
-								</p>
-								<p>            				
-            						  <a href="addBandAd" class="tm-button tm-button-normal">Zespół szuka Muzyka</a>    	     
-                                </p>
-                            </div>
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Przeglądaj Ogłoszenia</h2>
-                                <p>
-            						  <a href="adMusicianSeeksList" class="tm-button tm-button-normal">Muzyk szuka zespołu</a><br>
-								</p>
-								<p>
-            						  <a href="#" class="tm-button tm-button-normal">Zespół szuka Muzyka</a><br>
-								</p>
-								<p>
-            						  <a href="#" class="tm-button tm-button-normal">Szukaj Konkretnych</a>    									
-								</p>
-                            </div>    
-
-                    </div>
+				<div class="tm-flex">
+					
+			         	<table>
+							<tr>
+								<th>Zespół</th>
+								<th>Akcje</th>
+							</tr>
+							<c:forEach items="${bands}" var="band">
+							<tr>
+								<td>${band.bandName}</td>
+								<td>	<a href="<c:url   value="editBand/${band.id}"/>">Edytuj</a>
+										<a href="<c:url   value="deleteBand/${band.id}"/>">Usuń</a></td>
+							</tr>
+							</c:forEach>
+						</table>
+					  
+         	    </div>
 
                    
-        </div>
+        	</div>
         
          
       

@@ -64,7 +64,7 @@ http://www.templatemo.com/tm-496-pipeline
 				<ul class="tm-main-nav-ul">
 					<li class="tm-nav-item"><a href="/SoundSearch/home"
 						class="tm-nav-item-link tm-button"> <i
-						class="fa fa-smile-o tm-nav-fa"></i>Strona Startowa
+							class="fa fa-smile-o tm-nav-fa"></i>Strona Startowa
 					</a></li>
 					<li class="tm-nav-item"><a href="/SoundSearch/editUser"
 						class="tm-nav-item-link tm-button"> <i
@@ -74,50 +74,72 @@ http://www.templatemo.com/tm-496-pipeline
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-image tm-nav-fa"></i>Zespoły
 					</a></li>
-					<li class="tm-nav-item"><a href="#services"
+					<li class="tm-nav-item"><a href="/SoundSearch/adMenu"
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-tasks tm-nav-fa"></i>Ogłoszenia
 					</a></li>
-					
+
 				</ul>
 				</nav>
 			</div>
 
-			<div class="tm-main-content"  >
+			<div class="tm-main-content">
 
+
+
+				<div class="tm-flex">
+					<div class="form-group">
+						<form:form method="post" modelAttribute="singleUser">
+						
+							<form:input type="hidden" class="form-control" items="${singleUser.id}"
+									path="id" id="id"/>
+
+							<form:input type="hidden" class="form-control" items="${singleUser.username}"
+									path="username" id="username"/>
+									
+							<form:input type="hidden" class="form-control" items="${singleUser.password}"
+									path="password" id="password"/>
+									
+							<form:input type="text" class="form-control" items="${singleUser.firstName}"
+									path="firstName" id="firstName"/>
+									
+							<form:input type="text" class="form-control" items="${singleUser.lastName}"
+									path="lastName" id="lastName" placeholder="Nazwisko"/>
+						
+							<form:input type="text" class="form-control" items="${singleUser.city}" 
+									path="city" id="city" placeholder="Miejscowość"/>
+												
+							<form:input type="date" class="form-control" items="${singleUser.birthDate}"
+									path="birthDate" id="birthDate" placeholder="Rok urodzenia"/>
+						
+							<form:input type="date" class="form-control" items="${singleUser.playingYears}" path="playingYears" id="playingYears" 
+												placeholder="Od kiedy grasz?"/>
+												
+							<form:input type="text" class="form-control" items="${singleUser.gear}" path="gear" id="gear" 
+												placeholder="Sprzęt, który posiadasz"/>
+						
+							<form:input type="text" class="form-control" items="${singleUser.description}" path="description" id="description" 
+												placeholder="Coś o Tobie"/>
+												
+							<form:input type="text" class="form-control" items="${singleUser.httpLink}" path="httpLink" id="httpLink" 
+												placeholder="Link do Twojej strony"/>
+
+						
+							<form:select multiple="true" path="playedInstruments" itemValue="id" items="${playedInstruments}" itemLabel="name" />
+						
+							<form:select multiple="true" path="musicGenres" itemValue="id" items="${musicGenres}" itemLabel="genreName"/>
+							
+							<button type="submit" class="btn btn-primary">Zapisz!</button>
+						
+						</form:form>
 					
-	                       
-                        <div class="tm-flex">
+					</div>
+					
 
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Dodaj Ogłoszenie</h2>
-                                <p>
-            						  <a href="addUserAd" class="tm-button tm-button-normal">Muzyk szuka Zespołu</a>
-								</p>
-								<p>            				
-            						  <a href="addBandAd" class="tm-button tm-button-normal">Zespół szuka Muzyka</a>    	     
-                                </p>
-                            </div>
-                            <div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                <h2 class="tm-section-title">Przeglądaj Ogłoszenia</h2>
-                                <p>
-            						  <a href="adMusicianSeeksList" class="tm-button tm-button-normal">Muzyk szuka zespołu</a><br>
-								</p>
-								<p>
-            						  <a href="#" class="tm-button tm-button-normal">Zespół szuka Muzyka</a><br>
-								</p>
-								<p>
-            						  <a href="#" class="tm-button tm-button-normal">Szukaj Konkretnych</a>    									
-								</p>
-                            </div>    
 
-                    </div>
+				</div>
 
-                   
-        </div>
-        
-         
-      
 
-    </body>
-    </html>
+			</div>
+</body>
+</html>

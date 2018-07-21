@@ -70,7 +70,7 @@ http://www.templatemo.com/tm-496-pipeline
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-smile-o tm-nav-fa"></i>Twój profil
 					</a></li>
-					<li class="tm-nav-item"><a href="#gallery"
+					<li class="tm-nav-item"><a href="/SoundSearch/bandMenu"
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-image tm-nav-fa"></i>Zespoły
 					</a></li>

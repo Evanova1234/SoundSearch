@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import pl.soundsearch.entity.AdCategory;
+import pl.soundsearch.entity.Advertisement;
 import pl.soundsearch.entity.BandUser;
 import pl.soundsearch.entity.MusicGenre;
 import pl.soundsearch.entity.SingleUser;
@@ -29,6 +32,18 @@ public class BandUserController {
 	MusicGenreRepository musicGenreRepository; 
 	@Autowired
 	BandUserRepository bandUserRepository; 
+	
+	@RequestMapping(value = "/bandMenu", method = RequestMethod.GET)
+	String bandMenu(Model model) { 
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();
+		SingleUser singleUser = singleUserRepository.findByUsername(currentPrincipalName); 
+		List<BandUser> bands = bandUserRepository.findByUser(singleUser.getId());  
+		model.addAttribute("bands", bands);
+		return "bandMenu"; 
+		
+	}
 	
 	@RequestMapping(value = "/addBand", method = RequestMethod.GET)
 	String addBandUser(Model model) { 
