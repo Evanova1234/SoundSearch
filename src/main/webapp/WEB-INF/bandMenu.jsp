@@ -9,6 +9,59 @@
 
 <html lang="en">
 <head>
+<style>
+#bands {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#bands td, #bands th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#bands tr:nth-child(even){background-color: #f2f2f2;}
+
+#bands tr:hover {background-color: #ddd;}
+
+#bands th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #993366;
+    color: white;
+}
+
+<style>
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+</style>
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +107,7 @@ http://www.templatemo.com/tm-496-pipeline
 
 		<section id="welcome" class="tm-content-box tm-banner margin-b-10">
 		<div class="tm-banner-inner">
-			<h1 class="tm-banner-title">Pipeline</h1>
+			<h1 class="tm-banner-title">SoundSearch</h1>
 		</div>
 		</section>
 
@@ -78,6 +131,10 @@ http://www.templatemo.com/tm-496-pipeline
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-tasks tm-nav-fa"></i>Ogłoszenia
 					</a></li>
+                    <li class="tm-nav-item"><a href="/SoundSearch/logout" 
+                    	class="tm-nav-item-link tm-button">
+                    <i class="fa fa-sitemap tm-nav-fa"></i>Wyloguj</a>
+                    </li>					
 					
 				</ul>
 				</nav>
@@ -87,19 +144,14 @@ http://www.templatemo.com/tm-496-pipeline
 
 					
 					
-					<div class="tm-gray-bg tm-box-pad tm-bordered-box tm-no-border-top">
-                                
-                                <p>
-            						  <a href="addUserAd" class="tm-button tm-button-normal">Dodaj Zespół</a>
-								</p>
-                </div>
+
 	                       
 				<div class="tm-flex">
 					
-			         	<table>
+			         	<table id="bands">
 							<tr>
-								<th>Zespół</th>
-								<th>Akcje</th>
+								<th>Zespoły w których grasz</th>
+								<th>Dostępne akcje</th>
 							</tr>
 							<c:forEach items="${bands}" var="band">
 							<tr>
@@ -109,9 +161,18 @@ http://www.templatemo.com/tm-496-pipeline
 							</tr>
 							</c:forEach>
 						</table>
+						
+						
 					  
-         	    </div>
+         	    	</div>
 
+					<p></p>
+					<div class="tm-flex">
+                                
+                                <p>
+            						  <a href="addBand" class="tm-button tm-button-normal">Dodaj Zespół</a>
+								</p>
+                	</div>
                    
         	</div>
         

@@ -9,6 +9,43 @@
 
 <html lang="en">
 <head>
+<style>
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #936;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +91,7 @@ http://www.templatemo.com/tm-496-pipeline
 
 		<section id="welcome" class="tm-content-box tm-banner margin-b-10">
 		<div class="tm-banner-inner">
-			<h1 class="tm-banner-title">Pipeline</h1>
+			<h1 class="tm-banner-title">SoundSearch</h1>
 		</div>
 		</section>
 
@@ -115,6 +152,7 @@ http://www.templatemo.com/tm-496-pipeline
 											value="${_csrf.token}" />
 										<input class="tm-button tm-button-normal" type="submit"
 											value="Register">
+											
 									</form:form>
 								</p>
                             </div>    

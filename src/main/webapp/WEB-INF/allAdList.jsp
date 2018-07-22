@@ -10,33 +10,59 @@
 <html lang="en">
 <head>
 <style>
+#table {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
 
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+#table td, #table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#table tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#table tr:hover {
+	background-color: #ddd;
+}
+
+#table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #993366;
+	color: white;
+}
+
+<
+style>input[type=text], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
 }
 
 input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+	width: 100%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+	background-color: #45a049;
 }
-
-
+</style>
 </style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -119,48 +145,60 @@ http://www.templatemo.com/tm-496-pipeline
 			<div class="tm-main-content">
 
 
-
+				<label>Lista Zespołów z miasta ${city}</label>
 				<div class="tm-flex">
-					<div class="form-group">
-						
-					<form:form method="post" modelAttribute="advertisement">
-							<p>
 					
-							<form:input type="text" class="form-control" path="description"
-								id="description" placeholder="Opis ogłoszenia" />
-							</p>	
-							<p>
-							<form:input type="date" class="form-control" path="expirationDate"
-								id="expirationDate" placeholder="Data Ogłoszenia" />	
-							</p>	
-							<p>
+					<table id="table">
+						<tr>
+							<th>Zespół</th>
+							<th>Autor</th>
+							<th>Miejscowość</th>
+							<th>Poszukiwane instrumenty</th>
+							<th>Ogłoszenie</th>
+						</tr>
+						<c:forEach items="${bandAdList}" var="ad">
+							<tr>
+								<td>${ad.bandUser.bandName}</td>
+								<td>${ad.singleUser.firstName}${ad.singleUser.lastName}</td>
+								<td>${ad.singleUser.city}</td>
+								<td><c:forEach items="${ad.instruments}" var="instrument">
+										<p>${instrument.name}</p>
+									</c:forEach></td>
+								<td>${ad.description}</td>
 
-							<form:select multiple="true" path="instruments" itemValue="id"
-								items="${playedInstruments}" itemLabel="name" />
-							</p>	
-							<p>
-
-							<form:select multiple="true" path="musicGenres" itemValue="id"
-								items="${musicGenres}" itemLabel="genreName" />
-							</p>	
-							<p>
-
-							<form:input type="hidden" path="adCategory" itemValue="adCategory"
-								items="${advertisement.adCategory}" itemLabel="adCategory" />
-							</p>	
-							<p>
-
-							<button type="submit" class="btn btn-primary">Zapisz!</button>
-							</p>	
-
-					</form:form>
-
-					</div>
-					
-
+							</tr>
+						</c:forEach>
+					</table>
 
 				</div>
+			<label>Lista Muzyków z miasta ${city}</label>
+				<div class="tm-flex">
+					
+					<table id="table">
+						<tr>
+							<th>Autor</th>
+							<th>Miejscowość</th>
+							<th>Instrumenty</th>
+							<th>Sprzęt</th>
+							<th>Ogłoszenie</th>
+						</tr>
+						<c:forEach items="${musicianAdList}" var="ad">
+							<tr>
+								<td>${ad.singleUser.firstName}${ad.singleUser.lastName}</td>
+								<td>${ad.singleUser.city}</td>
+								<td><c:forEach items="${ad.singleUser.playedInstruments}"
+										var="instrument">
+										<p>${instrument.name}</p>
+									</c:forEach></td>
 
+								<td>${ad.singleUser.gear}</td>
+								<td>${ad.description}</td>
+
+							</tr>
+						</c:forEach>
+					</table>
+
+				</div>
 
 			</div>
 </body>

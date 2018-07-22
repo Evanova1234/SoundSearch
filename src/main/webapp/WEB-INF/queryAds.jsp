@@ -10,7 +10,6 @@
 <html lang="en">
 <head>
 <style>
-
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -116,50 +115,20 @@ http://www.templatemo.com/tm-496-pipeline
 				</nav>
 			</div>
 
-			<div class="tm-main-content">
-
-
-
-				<div class="tm-flex">
+			<div class="tm-main-content"  >
 					<div class="form-group">
+						<form:form method="post" modelAttribute="searchCrtieria">
+							
+							<p>	
+							<label for="firstName">Szukaj w mieście</label>
+							<form:input type="text" class="form-control" path="city" id="city"/>
+							</p>
+							<button type="submit" class="tm-button tm-button-normal">Szukaj!</button>
 						
-					<form:form method="post" modelAttribute="advertisement">
-							<p>
+						</form:form>
 					
-							<form:input type="text" class="form-control" path="description"
-								id="description" placeholder="Opis ogłoszenia" />
-							</p>	
-							<p>
-							<form:input type="date" class="form-control" path="expirationDate"
-								id="expirationDate" placeholder="Data Ogłoszenia" />	
-							</p>	
-							<p>
-
-							<form:select multiple="true" path="instruments" itemValue="id"
-								items="${playedInstruments}" itemLabel="name" />
-							</p>	
-							<p>
-
-							<form:select multiple="true" path="musicGenres" itemValue="id"
-								items="${musicGenres}" itemLabel="genreName" />
-							</p>	
-							<p>
-
-							<form:input type="hidden" path="adCategory" itemValue="adCategory"
-								items="${advertisement.adCategory}" itemLabel="adCategory" />
-							</p>	
-							<p>
-
-							<button type="submit" class="btn btn-primary">Zapisz!</button>
-							</p>	
-
-					</form:form>
-
 					</div>
 					
-
-
-				</div>
 
 
 			</div>

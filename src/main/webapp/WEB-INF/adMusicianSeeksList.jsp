@@ -9,6 +9,60 @@
 
 <html lang="en">
 <head>
+<style>
+
+#table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #993366;
+    color: white;
+}
+
+<style>
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+
+</style>
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +108,7 @@ http://www.templatemo.com/tm-496-pipeline
 
 		<section id="welcome" class="tm-content-box tm-banner margin-b-10">
 		<div class="tm-banner-inner">
-			<h1 class="tm-banner-title">Pipeline</h1>
+			<h1 class="tm-banner-title">SoundSearch</h1>
 		</div>
 		</section>
 
@@ -78,6 +132,10 @@ http://www.templatemo.com/tm-496-pipeline
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-tasks tm-nav-fa"></i>Ogłoszenia
 					</a></li>
+                    <li class="tm-nav-item"><a href="/SoundSearch/logout" 
+                    	class="tm-nav-item-link tm-button">
+                    <i class="fa fa-sitemap tm-nav-fa"></i>Wyloguj</a>
+                    </li>					
 					
 				</ul>
 				</nav>
@@ -89,14 +147,25 @@ http://www.templatemo.com/tm-496-pipeline
 	                       
 				<div class="tm-flex">
 					
-         	<table>
+         	<table id="table">
 				<tr>
 					<th>Autor</th>
+					<th>Miejscowość</th>
+					<th>Instrumenty</th>
+					<th>Sprzęt</th>
 					<th>Ogłoszenie</th>
 				</tr>
 				<c:forEach items="${adList}" var="ad">
 				<tr>
 					<td>${ad.singleUser.firstName} ${ad.singleUser.lastName}</td>
+					<td>${ad.singleUser.city}</td>
+					<td>
+						<c:forEach items="${ad.singleUser.playedInstruments}" var="instrument">
+							<p>${instrument.name}</p>
+						</c:forEach>
+					</td>
+					
+					<td>${ad.singleUser.gear}</td>
 					<td>${ad.description}</td>
 					
 				</tr>

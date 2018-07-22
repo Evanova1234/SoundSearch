@@ -29,7 +29,7 @@ public class InstrumentController {
 	@RequestMapping(value = "/addInstrument", method = RequestMethod.POST)
 	public String addInstrument(Model model, @ModelAttribute Instrument instrument) {
 		instrumentRepository.save(instrument); 
-		return "Udalo sie";
+		return "home";
 	}
 
 	

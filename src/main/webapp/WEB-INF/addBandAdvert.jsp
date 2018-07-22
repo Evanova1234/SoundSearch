@@ -9,6 +9,34 @@
 
 <html lang="en">
 <head>
+<style>
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +82,7 @@ http://www.templatemo.com/tm-496-pipeline
 
 		<section id="welcome" class="tm-content-box tm-banner margin-b-10">
 		<div class="tm-banner-inner">
-			<h1 class="tm-banner-title">Pipeline</h1>
+			<h1 class="tm-banner-title">SoundSearch</h1>
 		</div>
 		</section>
 
@@ -78,17 +106,17 @@ http://www.templatemo.com/tm-496-pipeline
 						class="tm-nav-item-link tm-button"> <i
 							class="fa fa-tasks tm-nav-fa"></i>Ogłoszenia
 					</a></li>
+                    <li class="tm-nav-item"><a href="/SoundSearch/logout" 
+                    	class="tm-nav-item-link tm-button">
+                    <i class="fa fa-sitemap tm-nav-fa"></i>Wyloguj</a>
+                    </li>					
 					
 				</ul>
 				</nav>
 			</div>
 
-			<div class="tm-main-content"  >
-
-					
-	                       
-				<div class="tm-flex">
-					
+			<div class="tm-main-content"  >   
+					<div class="form-group">
 					<form:form method="post" modelAttribute="advertisement">
 
 						<p>	
@@ -102,8 +130,7 @@ http://www.templatemo.com/tm-496-pipeline
 							</p>	
 							<p>
 
-						<form:select multiple="true" path="instruments" itemValue="id" 
-							items="${playedInstruments}" itemLabel="name" />
+						<form:select multiple="true" path="instruments" itemValue="id" items="${playedInstruments}" itemLabel="name" />
 							</p>	
 							<p>
 
@@ -112,7 +139,7 @@ http://www.templatemo.com/tm-496-pipeline
 							</p>	
 							<p>
 
-						<form:checkboxes path="bandUser" itemValue="id" 
+						<form:select path="bandUser" itemValue="id" 
 							items="${bandUsers}" itemLabel="bandName"/>
 							</p>	
 							<p>
@@ -129,7 +156,7 @@ http://www.templatemo.com/tm-496-pipeline
 					</form:form>
          					  
          	  </div>
-          
+          	  </div>
         </div>
         
          

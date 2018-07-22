@@ -11,6 +11,29 @@
 <head>
 <style>
 
+#table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#table td, #table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#table tr:nth-child(even){background-color: #f2f2f2;}
+
+#table tr:hover {background-color: #ddd;}
+
+#table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #993366;
+    color: white;
+}
+<style>
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -37,6 +60,7 @@ input[type=submit]:hover {
 }
 
 
+</style>
 </style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,7 +117,7 @@ http://www.templatemo.com/tm-496-pipeline
 				<ul class="tm-main-nav-ul">
 					<li class="tm-nav-item"><a href="/SoundSearch/home"
 						class="tm-nav-item-link tm-button"> <i
-							class="fa fa-smile-o tm-nav-fa"></i>Strona Startowa
+						class="fa fa-smile-o tm-nav-fa"></i>Strona Startowa
 					</a></li>
 					<li class="tm-nav-item"><a href="/SoundSearch/editUser"
 						class="tm-nav-item-link tm-button"> <i
@@ -111,57 +135,48 @@ http://www.templatemo.com/tm-496-pipeline
                     	class="tm-nav-item-link tm-button">
                     <i class="fa fa-sitemap tm-nav-fa"></i>Wyloguj</a>
                     </li>					
-
+				
 				</ul>
 				</nav>
 			</div>
 
-			<div class="tm-main-content">
+			<div class="tm-main-content"  >
 
-
-
+					
+	                       
 				<div class="tm-flex">
-					<div class="form-group">
-						
-					<form:form method="post" modelAttribute="advertisement">
-							<p>
 					
-							<form:input type="text" class="form-control" path="description"
-								id="description" placeholder="Opis ogłoszenia" />
-							</p>	
-							<p>
-							<form:input type="date" class="form-control" path="expirationDate"
-								id="expirationDate" placeholder="Data Ogłoszenia" />	
-							</p>	
-							<p>
-
-							<form:select multiple="true" path="instruments" itemValue="id"
-								items="${playedInstruments}" itemLabel="name" />
-							</p>	
-							<p>
-
-							<form:select multiple="true" path="musicGenres" itemValue="id"
-								items="${musicGenres}" itemLabel="genreName" />
-							</p>	
-							<p>
-
-							<form:input type="hidden" path="adCategory" itemValue="adCategory"
-								items="${advertisement.adCategory}" itemLabel="adCategory" />
-							</p>	
-							<p>
-
-							<button type="submit" class="btn btn-primary">Zapisz!</button>
-							</p>	
-
-					</form:form>
-
-					</div>
+         	<table id="table">
+				<tr>
+					<th>Zespół</th>
+					<th>Autor</th>
+					<th>Miejscowość</th>
+					<th>Poszukiwane instrumenty</th>
+					<th>Ogłoszenie</th>
+				</tr>
+				<c:forEach items="${adList}" var="ad">
+				<tr>
+					<td>${ad.bandUser.bandName}</td>
+					<td>${ad.singleUser.firstName} ${ad.singleUser.lastName}</td>
+					<td>${ad.singleUser.city}</td>
+					<td>
+						<c:forEach items="${ad.instruments}" var="instrument">
+							<p>${instrument.name}</p>
+						</c:forEach>
+					</td>
+					<td>${ad.description}</td>
 					
+				</tr>
+				</c:forEach>
+			</table>
+					  
+         	    </div>
 
+                   
+        	</div>
+        
+         
+      
 
-				</div>
-
-
-			</div>
-</body>
-</html>
+    </body>
+    </html>

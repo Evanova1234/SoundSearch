@@ -51,9 +51,19 @@ public class SingleUserController {
 	@RequestMapping(value = "/editUser", method = RequestMethod.POST)
 	public String addSingleUser(Model model, @ModelAttribute SingleUser singleUser) { 
 	
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String currentPrincipalName = authentication.getName();		
+		SingleUser currentUserSetup = singleUserRepository.findByUsername(currentPrincipalName); 
+		
+		if(singleUser.getMusicGenres().isEmpty()) { 
+			singleUser.setMusicGenres(currentUserSetup.getMusicGenres());
+		}
+		if(singleUser.getPlayedInstruments().isEmpty()) { 
+			singleUser.setPlayedInstruments(currentUserSetup.getPlayedInstruments());
+		}
 		
 		singleUserRepository.save(singleUser); 
-		return "Udalo sie";
+		return "home";
 	}
 	
 	@InitBinder

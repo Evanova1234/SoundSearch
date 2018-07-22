@@ -36,7 +36,7 @@ public class MusicGenreController {
 	@RequestMapping(value = "/addGenre", method =  RequestMethod.POST)
 	String addGenre(Model model, @ModelAttribute MusicGenre musicGenre) {
 		musicGenreRepository.save(musicGenre); 
-		return "Udalo sie"; 
+		return "home"; 
 	}
 	
 	

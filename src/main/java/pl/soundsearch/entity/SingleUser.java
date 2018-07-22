@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
@@ -44,6 +46,7 @@ public class SingleUser {
 	private List<Instrument> playedInstruments; 
 	
 	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<MusicGenre> musicGenres;
 
 	public SingleUser() {

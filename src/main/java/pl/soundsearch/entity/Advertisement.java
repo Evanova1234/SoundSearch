@@ -5,12 +5,16 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
 @Entity
@@ -30,7 +34,8 @@ public class Advertisement {
 	@ManyToOne								// Many advertisements may be submitted by one user
 	private SingleUser singleUser; 			// used only if it is a band seeking a musician 
 	
-	@ManyToMany								
+	@ManyToMany	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Instrument> instruments;	// represents played instrument if user seeks a musician.
 											// represents sought instrument if band seeks a band 
 	@ManyToMany

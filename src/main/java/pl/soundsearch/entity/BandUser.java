@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "BANDS")
 
@@ -26,6 +29,14 @@ public class BandUser {
 	private String bandName; 
 	
 	private Date creationDate; 
+	
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<MusicGenre> musicGenres; 
+	
+	private String httpLink;
+	
+	private String city;
 	
 	@ManyToMany
 	private List<SingleUser> bandMembers; 
@@ -92,15 +103,14 @@ public class BandUser {
 
 	private String bandDescription; 
 	
-	@ManyToMany
-	private List<MusicGenre> musicGenres; 
 	
-	private String httpLink;
-	
-	private String city;
 
 	public BandUser() {
 		super();
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	

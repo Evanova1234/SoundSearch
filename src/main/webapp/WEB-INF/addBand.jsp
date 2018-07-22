@@ -36,8 +36,8 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-
 </style>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -93,7 +93,7 @@ http://www.templatemo.com/tm-496-pipeline
 				<ul class="tm-main-nav-ul">
 					<li class="tm-nav-item"><a href="/SoundSearch/home"
 						class="tm-nav-item-link tm-button"> <i
-							class="fa fa-smile-o tm-nav-fa"></i>Strona Startowa
+						class="fa fa-smile-o tm-nav-fa"></i>Strona Startowa
 					</a></li>
 					<li class="tm-nav-item"><a href="/SoundSearch/editUser"
 						class="tm-nav-item-link tm-button"> <i
@@ -111,57 +111,61 @@ http://www.templatemo.com/tm-496-pipeline
                     	class="tm-nav-item-link tm-button">
                     <i class="fa fa-sitemap tm-nav-fa"></i>Wyloguj</a>
                     </li>					
-
+					
 				</ul>
 				</nav>
 			</div>
 
-			<div class="tm-main-content">
+			<div class="tm-main-content"  >
 
+					
+	                       
+				
+					
+					<form:form method="post" modelAttribute="bandUser">
 
-
-				<div class="tm-flex">
-					<div class="form-group">
+						<p>	
+						<label for="bandName">Nazwa zespołu:</label>
+						<form:input type="text" class="form-control" path="bandName" id="bandName" items="${bandUser.bandName}" placeholder="Nazwa zespołu"/>
+							</p>	
+							<p>
+						<label for="creationDate">Data powstania:</label>
+						<form:input type="date" class="form-control" path="creationDate" id="creationDate" items="${bandUser.creationDate}"
+							 placeholder="Data Ogłoszenia"/>
+							</p>	
+							<p>
+						<label for="city">Miejscowość:</label>
+						<form:input type="text" class="form-control" path="city" id="city" items="${bandUser.city}"
+							 placeholder="Miejscowość"/>
+							</p>	
+							<p>
+							<p>
+							<label for="genre">Grane gatunki muzyczne:</label>
+							<p>
+							<sub>Aktualne ustawienie
+								<c:forEach items="${bandUser.musicGenres}" var="genre">
+									<font color="red"><i>${genre.genreName},</i> </font>
+									
+								</c:forEach></sub>
+							</p>
+							<form:select multiple="true" path="musicGenres" itemValue="id" items="${musicGenres}" itemLabel="genreName"/>
+							</p>	
+							<p>
+							
+						<form:input type="hidden" class="form-control" path="id" id="id" items="${band.Userid}"/>
+							</p>	
+							<p>	
 						
-					<form:form method="post" modelAttribute="advertisement">
-							<p>
-					
-							<form:input type="text" class="form-control" path="description"
-								id="description" placeholder="Opis ogłoszenia" />
-							</p>	
-							<p>
-							<form:input type="date" class="form-control" path="expirationDate"
-								id="expirationDate" placeholder="Data Ogłoszenia" />	
-							</p>	
-							<p>
-
-							<form:select multiple="true" path="instruments" itemValue="id"
-								items="${playedInstruments}" itemLabel="name" />
-							</p>	
-							<p>
-
-							<form:select multiple="true" path="musicGenres" itemValue="id"
-								items="${musicGenres}" itemLabel="genreName" />
-							</p>	
-							<p>
-
-							<form:input type="hidden" path="adCategory" itemValue="adCategory"
-								items="${advertisement.adCategory}" itemLabel="adCategory" />
-							</p>	
-							<p>
-
-							<button type="submit" class="btn btn-primary">Zapisz!</button>
-							</p>	
-
+						<button type="submit" class="tm-button tm-button-normal">Zapisz!</button>
+							</p>
 					</form:form>
+         					  
 
-					</div>
-					
+          </div>
+        </div>
+        
+         
+      
 
-
-				</div>
-
-
-			</div>
-</body>
-</html>
+    </body>
+    </html>

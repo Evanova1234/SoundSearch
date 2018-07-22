@@ -19,4 +19,14 @@ public interface AdvertisementRepository extends JpaRepository<Advertisement, Lo
 	@Query(value = "Select * from ADVERTISEMENT where adCategory = 1", nativeQuery = true)
 	List<Advertisement> findWhereBandSeeksMusician(); 
 
+	@Query (value = "select * from ADVERTISEMENT AS AD "
+					+ 	"LEFT JOIN SINGLEUSER AS SU ON AD.singleUser_id = SU.id "
+					+ 	"WHERE SU.city = :city AND AD.adCategory = \"1\"", nativeQuery = true)
+	List<Advertisement> findBandAdsByCity(@Param("city") String city);
+
+	
+	@Query (value = "select * from ADVERTISEMENT AS AD "
+			+ 	"LEFT JOIN SINGLEUSER AS SU ON AD.singleUser_id = SU.id "
+			+ 	"WHERE SU.city = :city AND AD.adCategory = \"0\"", nativeQuery = true)
+	List<Advertisement> findMusicianAdsByCity(@Param("city") String city);
 }
